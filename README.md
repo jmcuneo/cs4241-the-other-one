@@ -2,6 +2,12 @@
 
 https://ice-03-jacobs-salls-foley.glitch.me
 
+# Note:
+We have this project working when you run the main server and the react client locally, but we 
+didn't manage to get hosting working, nor could we get them both running locally via the npm
+start command. The hosted version is not running via react, but you can see the react scripts in the
+jacobs_salls_foley folder.
+
 Group members:
  - Milo Jacobs
  - Luke Foley
