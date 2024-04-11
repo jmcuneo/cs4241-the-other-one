@@ -3,45 +3,36 @@ import './App.css';
 
 function App() {
 
-  async function table() {
-    const response = await fetch("/appdata", {
-      method: "GET"
-    })
-    const text = await response.text()
-    const data = JSON.parse(text);
-
-    return (
-        <div className="App">
-          <table>
-            <tr>
-              <th>id</th>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Birthday</th>
-              <th>Cake</th>
-              <th>More</th>
-            </tr>
-            {data.map((val, key) => {
-              return (
-                  <tr key={key}>
-                    <td>{val.id}</td>
-                    <td>{val.name}</td>
-                    <td>{val.age}</td>
-                    <td>{val.birthday}</td>
-                    <td>{val.preferredCake}</td>
-                  </tr>
-              )
-            })}
-          </table>
-        </div>
-    )
-  }
+  const data = [
+    { "name": "Jack", "birthday": "05/24/2002", "preferredCake": "chocolate", "age": 21, "id": 0 },
+    { "name": "Jim", "birthday": "10/13/1938", "preferredCake": "vanilla", "age": 85, "id": 1 },
+    { "name": "John", "birthday": "07/18/1967", "preferredCake": "swirl", "age": 56, "id": 2 }
+  ]
 
   return (
     <div>
     <h1>Data Table</h1>
-    <table id="datatable">
-    </table>
+      <table>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Birthday</th>
+          <th>Cake</th>
+          <th>More</th>
+        </tr>
+        {data.map((val, key) => {
+          return (
+              <tr key={key}>
+                <td>{val.id}</td>
+                <td>{val.name}</td>
+                <td>{val.age}</td>
+                <td>{val.birthday}</td>
+                <td>{val.preferredCake}</td>
+              </tr>
+          )
+        })}
+      </table>
 
 
     <div id="all-forms-container" className="flex-row">
