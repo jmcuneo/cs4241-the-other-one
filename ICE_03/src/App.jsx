@@ -1,51 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
 
-function App() {
-    const [count, setCount] = useState(0)
+// we could place this Todo component in a separate file, but it's
+// small enough to alternatively just include it in our App.js file.
 
-    return (
-        <>
-            <h1 className="outfit-header-font">Ticket Reservation System</h1>
-            <form>
-                <label htmlFor="FirstName">First Name: </label>
-                <input type="text" id="FirstName" placeholder="First Name" required="required"/>
-                <label htmlFor="MiddleName">Middle Name: </label>
-                <input type="text" id="MiddleName" placeholder="Middle Name"/>
-                <label htmlFor="LastName">Last Name: </label>
-                <input type="text" id="LastName" placeholder="Last Name"/> <br/>
-                <label htmlFor="Email">Email: </label>
-                <input type="email" id="Email" placeholder="Email" required="required"/>
-                <label htmlFor="StartLocation">Start Location: </label>
-                <input type="text" id="StartLocation" placeholder="USA Start Location" required="required"/>
-                <label htmlFor="Destination">Destination: </label>
-                <input type="text" id="Destination" placeholder="USA destination" required="required"/>
-            </form>
-            <label htmlFor="transport-mode" >Choose your transportation mode:</label>
-            <select name="Transportation mode" id="transport-mode">
-                <option value="Choose">Choose</option>
-                <option value="Lyft">Lyft</option>
-                <option value="Uber">Uber</option>
-                <option value="PeterPan Bus">PeterPan Bus</option>
-                <option value="Greyhound Bus">Greyhound Bus</option>
-                <option value="Our Bus">Our Bus</option>
-                <option value="Subway">Subway</option>
-                <option value="Commuter Rail">Commuter Rail</option>
-            </select><br/>
-            <button className="outfit-inside-buttons-font submit" type="Submit" id="Submit">Submit</button>
-            <button onClick="NewData()" type="button" id="Confirm">Confirm</button>
-            <div id="booking_details">
-                <table> <tr> <th> Unique ID </th><th> First Name </th> <th> Middle Name </th>
-                    <th> Last Name</th><th> Email </th> <th>Start Location</th> <th> Destination </th>
-                    <th>Mode of Transportation</th> <th>Cost</th> </tr><tbody id="data_body"></tbody>
-                </table>
-            </div>
-            <footer>
-                <p>Copyright &copy; Ronak Wani. All rights reserved.</p>
-            </footer>
-        </>
-    )
+class Todo extends React.Component {
+    // our .render() method creates a block of HTML using the .jsx format
+    render() {
+        return <li>{this.props.name} :
+            <input type="checkbox" defaultChecked={this.props.completed} onChange={ e => this.change(e) }/>
+        </li>
+    }
+    // call this method when the checkbox for this component is clicked
+    change(e) {
+        this.props.onclick( this.props.name, e.target.checked )
+    }
 }
-export default App
+
+// main component
+class App extends React.Component {
+    constructor( props ) {
+        super( props )
+        // initialize our state
+        this.state = { todos:[] }
+        this.load()
+    }
+
+    // load in our data from the server
+    load() {
+        fetch( '/read', { method:'get', 'no-cors':true })
+            .then( response => response.json() )
+            .then( json => {
+                this.setState({ todos:json })
+            })
+    }
+
+    // render component HTML using JSX
+    render() {
+        return (
+            <div className="App">
+                <input type='text' /><button onClick={ e => this.add( e )}>add</button>
+                <ul>
+                    { this.state.todos.map( (todo,i) => <Todo key={i} name={todo.name} completed={todo.completed} onclick={ this.toggle } /> ) }
+                </ul>
+            </div>
+        )
+    }
+
+    // when an Todo is toggled, send data to server
+    toggle( name, completed ) {
+        fetch( '/change', {
+            method:'POST',
+            body: JSON.stringify({ name, completed }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+    }
+
+    // add a new todo list item
+    add( evt ) {
+        const value = document.querySelector('input').value
+
+        fetch( '/add', {
+            method:'POST',
+            body: JSON.stringify({ name:value, completed:false }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then( response => response.json() )
+            .then( json => {
+                // changing state triggers reactive behaviors
+                this.setState({ todos:json })
+            })
+    }
+}
+
+export default App;
