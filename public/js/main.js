@@ -1,9 +1,4 @@
-//todo
-// sipmle oscillator when div/button is clicked, playing note
-// radio button that chooses the sound to play
-// slider to change volume
-
-import { startOsc, stopOsc } from "./piano.js";
+import { startOsc, stopOsc, changeType } from "./piano.js";
 
 let volumeModifier;
 
@@ -18,29 +13,13 @@ window.onload = () => {
                 frequency = 3000;
             }
 
-            let stopSound;
-
             element.addEventListener("mousedown", () => {
-                startOsc(frequency, volumeModifier, 0)
-                // stopSound = playSound(frequency);
-                // console.log(volumeModifier);
-                // gainNode.gain.setValueAtTime(volumeModifier, audioContext.currentTime);
+                startOsc(frequency, volumeModifier);
             });
 
             element.addEventListener("mouseup", () => {
-                stopOsc()
-                // gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-                // if (stopSound) {
-                //     stopSound(  );
-                // }
+                stopOsc();
             });
-
-            // element.addEventListener("mouseleave", () => {
-            //     gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-            //     if (stopSound) {
-            //         stopSound();
-            //     }
-            // });
         }
     );
 };
@@ -49,17 +28,17 @@ export function setVolumeModifier(value) {
     volumeModifier = value * 0.01;
 }
 
-const WAVE_TYPES = ["wave", "tri", "square"];
+const WAVE_TYPES = ["sine", "triangle", "square"];
 function soundTypeButtons() {
     let wave_type = 0;
     let buttons = document.querySelector(".wave-type-grid").children;
     for (let j = 0; j < buttons.length; j++) {
         buttons[j].onclick = () => {
+            wave_type = j;
+            changeType(WAVE_TYPES[j]);
             for (let i = 0; i < buttons.length; i++) {
                 if (j == i) buttons[i].classList.add("checked");
                 else buttons[i].classList.remove("checked");
-
-                //TODO: set wave type with wave_type
             }
         };
     }

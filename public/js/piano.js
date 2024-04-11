@@ -1,11 +1,10 @@
 const audioContext = new AudioContext();
 let oscillator;
-let type;
-// const gainNode = audioContext.createGain();
+let osc_type = 'sine';
 
-export function startOsc(frequency, volume, waveType) {
+export function startOsc(frequency, volume) {
     oscillator = audioContext.createOscillator()
-    oscillator.type = "sine";
+    oscillator.type = osc_type;
     oscillator.frequency.value = frequency;
     oscillator.start(0);
     let gain = audioContext.createGain()
@@ -17,23 +16,12 @@ export function startOsc(frequency, volume, waveType) {
 export function stopOsc() {
     oscillator.stop(0);
     oscillator.disconnect();
+    oscillator = undefined;
 }
 
-export function playSound(frequency) {
-    const oscillator = audioContext.createOscillator();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-    oscillator.connect(audioContext.destination);
-    oscillator.start();
-    console.log("started");
-    // oscillator.stop(audioContext.currentTime + 1);
-
-    return () => {
-        oscillator.stop();
-        oscillator.disconnect();
-    };
-}
-
-export function changeType(type) {
-    if ()
-} v
+export function changeType(new_type) {
+    osc_type = new_type
+    if (oscillator) {
+        oscillator.type = new_type;
+    }
+} 
