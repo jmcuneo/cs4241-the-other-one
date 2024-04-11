@@ -1,16 +1,33 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
+    <script src="./bounce.js"></script>
     <title>CS4241 In Class</title>
     <meta charset="utf-8">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <script src="./bounce.js"></script>
+    <style>
+      *{
+        margin:0;
+        padding: 0;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+
+    
   </head>
   <body>
+    
     <header>
         <h1>DVD Bounce Simulator</h1>
     </header>
     <p>Click within the box to make a disk appear.</p>
     <canvas id="canvas" width="480" height="320"></canvas>
   </body>
+  <script src="./main.js">
+    
+  </script>
 </html>
