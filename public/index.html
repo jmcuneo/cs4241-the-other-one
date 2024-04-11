@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="index.css">
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+	<script type="module">
+		window.onload = async function () {
+			// Declare the chart dimensions and margins.
+            const {height, width} = document.querySelector("#map").getBoundingClientRect();
+			const marginTop = 20;
+			const marginRight = 30;
+			const marginBottom = 30;
+			const marginLeft = 40;
+
+			// Declare the x (horizontal position) scale.
+			/*const x = d3.scaleUtc(
+            d3.extent(aapl, (d) => d.date),
+            [marginLeft, width - marginRight]
+        );*/
+
+			// Declare the y (vertical position) scale.
+			/*const y = d3.scaleLinear(
+            [0, d3.max(aapl, (d) => d.close)],
+            [height - marginBottom, marginTop]
+        );*/
+
+			// Declare the line generator.
+			/*const line = d3
+            .line()
+            .x((d) => x(d.date))
+            .y((d) => y(d.close));*/
+
+			// Create the SVG container.
+			const svg = d3
+				.select("#container")
+				.append("svg")
+
+				// .attr("width", width)
+				// .attr("height", height)
+				// .attr(
+				// 	"style",
+				// 	"max-width: 100%; height: auto; height: intrinsic;"
+				// )
+				.attr("id", "map");
+
+			/**
+             * var g = svg.append("g");
+      
+              d3.json("world-110m2.json", function(error, topology) {
+                g.selectAll("path")
+                .data(topojson.object(topology, topology.objects.countries)
+                .geometries)
+                .enter()
+                .append("path")
+                .attr("d", path)
+             * /
+
+        // Add the x-axis.
+        /*svg.append("g")
+            .attr("transform", `translate(0,${height - marginBottom})`)
+            .call(
+                d3
+                    .axisBottom(x)
+                    .ticks(width / 80)
+                    .tickSizeOuter(0)
+            );*/
+
+			// Add the y-axis, remove the domain line, add grid lines and a label.
+			/*svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`)
+            .call(d3.axisLeft(y).ticks(height / 40))
+            .call((g) => g.select(".domain").remove())
+            .call((g) =>
+                g
+                    .selectAll(".tick line")
+                    .clone()
+                    .attr("x2", width - marginLeft - marginRight)
+                    .attr("stroke-opacity", 0.1)
+            )
+            .call((g) =>
+                g
+                    .append("text")
+                    .attr("x", -marginLeft)
+                    .attr("y", 10)
+                    .attr("fill", "currentColor")
+                    .attr("text-anchor", "start")
+                    .text("↑ Daily close ($)")
+            );*/
+
+			// Append a path for the line.
+			/*svg.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)*/
+			//.attr("d", line(aapl));
+
+			//STORE CSV AS aapl
+			/*Plot.plot({
+          y: {grid: true, label: "Earthquakes"},
+          marks: [
+              Plot.ruleY([0]),
+              Plot.lineY(aapl, {x: "date", y: "close", stroke: "steelblue"})
+      ]});*/
+
+			const response = await fetch("/data", {
+				method: "GET",
+			});
+			const data = await response.json();
+			const projection = d3.geoAlbers();
+			const path = d3.geoPath(projection);
+			svg.append("path")
+				.datum({ type: "FeatureCollection", features: data.features })
+				.attr("d3", d3.geoPath())
+				.attr("stroke", "steelblue")
+				.attr("stroke-width", 1.5)
+				.attr("d", (feature) => path(feature));
+		};
+	</script>
+
+	<head>
+		<title>The Other One</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- get rid of favicon error -->
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+	</head>
+
+	<body>
+        <h1>Map of World Earthquakes</h1>
+        <div id="container">
+		<img
+			src="https://simplemaps.com/static/demos/resources/svg-library/svgs/world.svg"
+			id="map"></div>
+	</body>
+</html>
