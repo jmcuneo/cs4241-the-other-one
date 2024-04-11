@@ -9,13 +9,7 @@ window.onload = () => {
     let dx = 1;
     let dy = -1;
 
-    let randomColor = () => Math.floor(Math.random()*16777215).toString(16)
-    window.onload = () => {
-        drawCircle(320,44, randomColor())
-        
-        
-    
-    }
+    function randomColor() { return Math.floor(Math.random()*16777215).toString(16)}
 
     canvas.addEventListener('click', function(event) {
         x = event.pageX - canvasLeft;
@@ -26,7 +20,7 @@ window.onload = () => {
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawCircle(x,y,randomColor())
+        drawCircle(randomColor())
 
         if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
             dx = -dx;
@@ -52,7 +46,7 @@ window.onload = () => {
     function startGame() {
         const interval = setInterval(draw, 10);
     }
-    function drawCircle(x,y,color = "#AFAFAF" ){
+    function drawCircle(color){
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
         ctx.beginPath();
@@ -80,7 +74,7 @@ window.onload = () => {
         ctx.fill();
         ctx.beginPath();
         ctx.arc(x, y, 10, 0, Math.PI * 2, false);
-        ctx.fillStyle = "#EEE";
+        ctx.fillStyle = "black";
         ctx.fill();
         ctx.closePath();
         ctx.arc(x,y,10,0,2*Math.PI)
