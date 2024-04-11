@@ -39,9 +39,7 @@ function App() {
 
       <div id="form-new-container" className="form-container">
         <h3 className="form-header">Form for New Entry</h3>
-        <form id="form-new" onKeyDown="if(event.keyCode === 13) {
-          return false;
-        }">
+        <form id="form-new">
           <label>Name:</label>
           <input type="text" id="yourname" placeholder="your name here"/>
             <label>Birthday (MM/DD/YYYY):</label>
@@ -54,9 +52,7 @@ function App() {
 
       <div id="form-update-container" className="form-container">
         <h3 className="form-header">Form for Updating Entry (Click on an ID in table)</h3>
-        <form id="form-update" onKeyDown="if(event.keyCode === 13) {
-          return false;
-        }">
+        <form id="form-update">
           <label>ID:</label>
           <input type="number" id="id" disabled/>
             <label>Name:</label>
