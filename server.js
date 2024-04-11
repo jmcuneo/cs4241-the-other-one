@@ -13,6 +13,9 @@ const server = http.createServer( function( request,response ) {
     case '/explanation.html':
     sendFile( response, 'explanation.html' )
       break
+    case '/index.js':
+      sendFile( response, 'index.js' )
+        break
     default:
       response.end( '404 Error: File Not Found' )
   }
