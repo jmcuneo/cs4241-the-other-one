@@ -1,0 +1,29 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.mjs" type="module"></script>
+</head>
+
+<body>
+    <div id="piano"></div>
+    <script>
+        var piano = new Nexus.Piano('#piano', {
+            'size': [1000, 250],
+            'mode': 'button', // 'button', 'toggle', or 'impulse'
+            'lowNote': 24,
+            'highNote': 60
+        })
+
+        let noteClicked = false;
+
+        let element = document.createElement("p");
+        piano.on('change', function(v) {
+            if (v.state === true) {
+                element.textContent = "Note clicked: " + v.note;
+                document.body.appendChild(element);
+            }
+        });
+    </script>
+</body>
+
+</html>
