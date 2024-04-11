@@ -47,7 +47,7 @@ for(let i = 0; i < 3; i++){
         // cube.visible = false;
         scene.add( cube );
 
-
+        var count = 0
         const mouse = new THREE.Vector2();
         const raycaster = new THREE.Raycaster();
         window.addEventListener('click', (event) => {
@@ -56,8 +56,12 @@ for(let i = 0; i < 3; i++){
             raycaster.setFromCamera(mouse, camera);
             const intersects = raycaster.intersectObjects(cubes);
             if(intersects.length > 0){
-                intersects[0].object.material.color.set(Math.random() * 0xFFFFFF);
-                // intersects[0].visible = true;
+                if(count % 2 == 0){
+                    intersects[0].object.material.color.set("#FF0000");
+                }else{
+                    intersects[0].object.material.color.set("#00FF00");
+                }
+                count += 1
             }
         });
 
