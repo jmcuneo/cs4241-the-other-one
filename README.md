@@ -14,3 +14,14 @@ In this activity, you will complete a simplified version of A4, specifically usi
     * Discuss with your team what you think you can reasonably accomplish by the end of the class period. **As this is an in-class activity, we are NOT expecting the same level of complexity as A4,** although we are expecting you to demonstrate a basic understanding of the technologies in question. Do what you can with the time you have and take advantage of the fact that there are multiple people working on this (whereas A4 is an individual effort). This will be a bit of an exercise in time management, project estimation, and team communication.
     * Your README should include your hosting link, the name of all group members, the contributions of each group member, and any instructions necessary to use the application. You can ignore the points in A4 about goals and challenges.
 
+Our Group did the Components aspect of this ICE for our project. We used an old version of A2 and converted to React elements. 
+
+The group consisted of Jack Lafond, Aidan MacNevin, Nicolas Valentino
+- Jack: Focused on table component and loading data
+- Aidan: Initialized project in React and deployed locally
+- Nicolas: Helped to implement React practices through previous experience + examples
+
+Our team could not successfully deploy the application to glitch on time, but we were able to run this locally using npm start (react-scripts start)
+https://ice03-jackaidannick.glitch.me/ice3/
+
+![img.png](img.png)
