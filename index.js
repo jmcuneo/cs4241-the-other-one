@@ -26,7 +26,7 @@ canvas.width = 512;
 canvas.height = 512;
 
 let items = [[0, 1, 1, 0], [1, 0, 0, 1], [0, 0, 0, 0], [1, 0, 1, 1]];
-draw = function () {
+function draw() {
     window.requestAnimationFrame(draw);
 
     for (let i = 0; i < items.length; i++) {
