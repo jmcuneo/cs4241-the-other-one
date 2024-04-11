@@ -1,26 +1,29 @@
+"use strict";
 const explanationButton = document.getElementById("explanationButton");
 const startButton = document.getElementById("startButton");
 const nextButton = document.getElementById("nextButton");
 const resetButton = document.getElementById("resetButton");
 
-explanationButton.addEventListener('click', async () => { 
+explanationButton.addEventListener('click', async () => {
     window.location.href = "explanation.html";
 });
 
-startButton.addEventListener('click', async () => { 
-    
+startButton.addEventListener('click', async () => {
+
 });
 
-nextButton.addEventListener('click', async () => { 
-    
+nextButton.addEventListener('click', async () => {
+
 });
 
-resetButton.addEventListener('click', async () => { 
+resetButton.addEventListener('click', async () => {
     window.location.href = "explanation.html";
-});const canvas = document.getElementById('canvas');
+});
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = canvas.height = 512;
+canvas.width = 512;
+canvas.height = 512;
 
 let items = [[0, 1, 1, 0], [1, 0, 0, 1], [0, 0, 0, 0], [1, 0, 1, 1]];
 draw = function () {
