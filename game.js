@@ -70,7 +70,6 @@ function update(grid) {
         }
         new_grid.push(new_row)
     }
-    console.log(new_grid)
     return new_grid
 }
 
