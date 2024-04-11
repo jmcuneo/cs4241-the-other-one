@@ -3,10 +3,10 @@ let grid = []
 
 function init_grid() {
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < Math.floor(512 / 10); i++) {
         let row = []
 
-        for (let j = 0; j < 10; j++) {
+        for (let j = 0; j < Math.floor(512 / 10); j++) {
             // row.push(i+j)
             row.push(Math.round(Math.random()))
         }
@@ -38,7 +38,7 @@ function count_neighbors(grid, x, y) {
             if (i === 0 && j === 0) continue;
             let coord_x = x + i
             let coord_y = y + j
-            if (coord_x >= 0 && coord_x < 10 && coord_y >= 0 && coord_y < 10) {
+            if (coord_x >= 0 && coord_x < Math.floor(512 / 10) && coord_y >= 0 && coord_y < Math.floor(512 / 10)) {
                 count += grid[coord_x][coord_y];
             }
         }
@@ -50,9 +50,9 @@ function count_neighbors(grid, x, y) {
 
 function update(grid) {
     let new_grid = []
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < Math.floor(512 / 10); i++) {
         let new_row = []
-        for (let j = 0; j < 10; j++) {
+        for (let j = 0; j < Math.floor(512 / 10); j++) {
             let num_neib = count_neighbors(grid, i, j)
             if (grid[i][j] === 1) {
                 if (num_neib < 2 || num_neib > 3) {
@@ -75,13 +75,5 @@ function update(grid) {
 }
 
 
-
-grid = init_grid()
-console.log(grid)
-
-for (let i = 0; i < 10; i++) {
-    grid = update(grid)
-    console.log(grid)
-}
 
 
