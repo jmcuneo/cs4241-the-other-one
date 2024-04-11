@@ -1,0 +1,101 @@
+/** Element Selector: body styling**/
+body {
+  background:lightcoral;
+  color:black;
+}
+/** Element Selector: h1 styling **/
+h1{
+  color: black;
+}
+/** Element Selector: common button styling for all buttons in the website**/
+button{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    display: inline-block;
+}
+/** Element Selector: input styling**/
+input{
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 50px;
+  padding-right: 20px;
+  text-align: left;
+}
+/** ID Selector: To style div containing the table using flexbox**/
+#booking_details{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    overflow: hidden;
+}
+/** Element Selector: To align the footer to center using CSS flexbox **/
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/** Element Selector: For table styling**/
+table{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+/** Element Selector: For table header styling**/
+th{
+    text-align: left;
+}
+/** Element Selector: For styling that should apply to table, table header, and table data cell**/
+table, th, td{
+    border: 3px solid black;
+    padding: 20px;
+
+}
+
+/** Element Selector: To apply styling to odd table rows**/
+tr{
+    background: burlywood;
+}
+/** Class Selector: Created a CSS class for Submit button styling**/
+.submit{
+  left:45%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+  position: absolute;
+  background: rgba(255, 0, 0, 0.89);
+  color: white;
+  margin-top: 25px;
+  align-self: center;
+}
+/** Class Selector: Google Font used for the body of the website**/
+.libre-franklin-body-text{
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+/** ID Selector: To style the confirm button**/
+#Confirm{
+    display:none;
+    left:35%;
+    -ms-transform: translate(50%, 50%);
+    transform: translate(50%, 50%);
+    position: absolute;
+    margin-top: 28px;
+}
+/** Class Selector: Google Font used for h1 header**/
+.outfit-header-font{
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: black;
+  font-style: normal;
+}
