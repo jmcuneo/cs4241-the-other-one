@@ -1,13 +1,22 @@
 window.onload = () => {
     const canvas = document.getElementById("canvas");
+    const canvasLeft = canvas.offsetLeft
+    const canvasTop = canvas.offsetTop
     const ctx = canvas.getContext("2d");
     const ballRadius = 10;
     let x = canvas.width / 2;
     let y = canvas.height / 2;
-    let dx = 4;
+    let dx = 1;
     let dy = -1;
 
 
+
+    canvas.addEventListener('click', function(event) {
+        x = event.pageX - canvasLeft;
+        y = event.pageY - canvasTop;
+        //console.log("Location: (" + xVal + ", " + yVal + ")");
+        startGame()
+    })
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -37,7 +46,7 @@ window.onload = () => {
         const interval = setInterval(draw, 10);
     }
 
-    startGame()
+    //startGame()
 
 
          
