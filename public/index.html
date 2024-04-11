@@ -1,0 +1,118 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano</title>
+    <script type="module" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="piano-grid piano-grid-upper">
+            <button class="piano-key piano-upper-key" data-freq="277.18">
+                C#
+            </button>
+            <button class="piano-key piano-upper-key" data-freq="311.13">
+                D#
+            </button>
+            <button class="piano-empty-key" data-freq="">
+                E#
+            </button>
+            <button class="piano-key piano-upper-key" data-freq="369.99">
+                F#
+            </button>
+            <button class="piano-key piano-upper-key" data-freq="415.3">
+                G#
+            </button>
+            <button class="piano-key piano-upper-key" data-freq="466.16">
+                A#
+            </button>
+            <button class="piano-empty-key" data-freq="">
+                B#
+            </button>
+        </div>
+        <div class="piano-grid">
+            <button class="piano-key piano-lower-key" data-freq="261.63">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        C
+                    </div>
+                </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="293.66">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        D
+                        </di>
+                    </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="329.63">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        E
+                    </div>
+                </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="349.23">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        F
+                    </div>
+                </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="392.00">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        G
+                    </div>
+                </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="440">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        A
+                    </div>
+                </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="493.88">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        B
+                    </div>
+                </div>
+            </button>
+            <button class="piano-key piano-lower-key" data-freq="523.25">
+                <div class="piano-key-name-holder">
+                    <div class="piano-key-name">
+                        C
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="wave-type-grid">
+            <button class="wave-button checked" id="Sine">
+                Sine
+            </button>
+            <button class="wave-button" id="Tri">
+                Triangle
+            </button>
+            <button class="wave-button" id="Square">
+                Square
+            </button>
+        </div>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="100" value="50" class="slider" id="volume-slider"
+                oninput="setVolumeModifier(this.value)">
+        </div>
+    </div>
+    <script type="module">
+        import { setVolumeModifier } from "./js/main.js";
+        window.setVolumeModifier = setVolumeModifier;
+    </script>
+
+
+</body>
+
+</html>
